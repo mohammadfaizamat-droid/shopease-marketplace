@@ -1,0 +1,105 @@
+<%- include("./partials/header") %>
+
+<div class="max-w-6xl mx-auto py-10">
+
+    <h1 class="text-4xl font-bold text-black dark:text-white">
+        Seller Dashboard
+    </h1>
+
+    <p class="mt-2 text-gray-500 dark:text-gray-400">
+        Welcome,
+        <span class="font-semibold">
+            <%= user.fullname %>
+        </span>
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+        <p class="text-gray-500 dark:text-gray-400">Total Products</p>
+        <h2 class="text-4xl font-bold mt-2 text-black dark:text-white">
+            <%= totalProducts %>
+        </h2>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+        <p class="text-gray-500 dark:text-gray-400">Orders</p>
+        <h2 class="text-4xl font-bold mt-2 text-black dark:text-white">
+            0
+        </h2>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+        <p class="text-gray-500 dark:text-gray-400">Revenue</p>
+        <h2 class="text-4xl font-bold mt-2 text-black dark:text-white">
+            ₹0
+        </h2>
+    </div>
+
+</div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+
+    <a href="/seller/products"
+        class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:scale-105 transition">
+
+        <i class="ri-shopping-bag-3-line text-4xl text-blue-500"></i>
+
+        <h2 class="text-xl font-semibold mt-4 text-black dark:text-white">
+            My Products
+        </h2>
+
+        <p class="text-gray-500 dark:text-gray-400 mt-2">
+            Manage your products
+        </p>
+
+    </a>
+
+    <a href="/owners/admin"
+        class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:scale-105 transition">
+
+        <i class="ri-add-circle-line text-4xl text-green-500"></i>
+
+        <h2 class="text-xl font-semibold mt-4 text-black dark:text-white">
+            Add Product
+        </h2>
+
+        <p class="text-gray-500 dark:text-gray-400 mt-2">
+            Create a new product
+        </p>
+
+    </a>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+
+        <i class="ri-file-list-3-line text-4xl text-orange-500"></i>
+
+        <h2 class="text-xl font-semibold mt-4 text-black dark:text-white">
+            Orders
+        </h2>
+
+        <p class="text-gray-500 dark:text-gray-400 mt-2">
+            Coming Soon
+        </p>
+
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+
+        <i class="ri-line-chart-line text-4xl text-purple-500"></i>
+
+        <h2 class="text-xl font-semibold mt-4 text-black dark:text-white">
+            Analytics
+        </h2>
+
+        <p class="text-gray-500 dark:text-gray-400 mt-2">
+            Coming Soon
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
+<%- include("./partials/footer") %>

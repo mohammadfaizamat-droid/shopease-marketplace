@@ -1,0 +1,82 @@
+<%- include("./partials/header") %>
+
+    <div class="max-w-4xl mx-auto mt-10">
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+
+            <h1 class="text-3xl font-bold text-black dark:text-white mb-6">
+                My Account
+            </h1>
+
+            <div class="space-y-4">
+
+                <div>
+                    <h3 class="text-gray-500 dark:text-gray-400">Full Name</h3>
+                    <p class="text-xl font-semibold text-black dark:text-white">
+                        <%= user.fullname %>
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-gray-500 dark:text-gray-400">Email</h3>
+                    <p class="text-xl font-semibold text-black dark:text-white">
+                        <%= user.email %>
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-gray-500 dark:text-gray-400">Current Role</h3>
+                    <p class="text-xl font-semibold text-blue-600 capitalize">
+                        <%= user.role %>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="mt-8">
+
+                <% if(user.sellerRequest==="none" ){ %>
+
+                    <form action="/users/request-seller" method="POST">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition">
+                            Become a Seller
+                        </button>
+                    </form>
+
+                    <% } else if(user.sellerRequest==="pending" ){ %>
+
+                        <div class="bg-yellow-100 text-yellow-800 px-5 py-3 rounded-lg">
+                            ⏳ Your seller request is pending approval.
+                        </div>
+
+                        <% } else if(user.sellerRequest==="approved" ){ %>
+
+                            <div class="space-y-4">
+
+                                <div class="bg-green-100 text-green-800 px-5 py-3 rounded-lg">
+                                    ✅ Congratulations! You are now a Seller.
+                                </div>
+
+                                <a href="/seller/dashboard"
+                                    class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition">
+                                    <i class="ri-store-2-line"></i>
+                                    Go to Seller Dashboard
+                                </a>
+
+                            </div>
+
+                            <% } else if(user.sellerRequest==="rejected" ){ %>
+
+                                <div class="bg-red-100 text-red-800 px-5 py-3 rounded-lg">
+                                    ❌ Your request was rejected.
+                                </div>
+
+                                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <%- include("./partials/footer") %>

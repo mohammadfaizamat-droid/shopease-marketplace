@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= typeof title !=="undefined" ? title : "ShopEase" %>
+    </title>
+
+<link rel="icon" type="image/png" href="/images/favicon.png">    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class"
+        }
+    </script>
+</head>
+
+
+<body
+    class="font-['helvetica_now_display'] bg-white text-black dark:bg-gray-900 dark:text-white transition-all duration-300">
+    <nav
+        class="sticky top-0 z-50 w-full flex justify-between items-center px-8 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md transition-all duration-300">
+        <div class="flex items-center gap-3">
+            <div
+                class="w-12 h-12 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+
+                <i class="ri-shopping-bag-3-fill text-white text-2xl"></i>
+
+            </div>
+
+            <div>
+
+                <h3
+                    class="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    ShopEase
+                </h3>
+
+                <p class="text-xs text-gray-500 dark:text-gray-400">
+                    Smart Shopping, Easy Living
+                </p>
+
+            </div>
+        </div>
+        <% var loggedin=typeof loggedin !=="undefined" ? loggedin : true %>
+            <% if(loggedin){ %>
+
+                <div class="flex items-center gap-8">
+
+                    <!-- Search Bar -->
+                    <div
+                        class="hidden lg:flex items-center bg-gray-100 dark:bg-gray-800 rounded-xl px-4 py-2 w-[420px]">
+                        <i class="ri-search-line text-gray-500 mr-2"></i>
+
+                        <input type="text" placeholder="Search products..."
+                            class="w-full bg-transparent outline-none text-black dark:text-white placeholder:text-gray-500">
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="flex items-center gap-6">
+
+                        <a href="/shop" class="hover:text-blue-500 transition">
+                            Shop
+                        </a>
+
+                        <a href="/cart" class="relative hover:text-blue-500 transition">
+
+                            Cart
+
+                            <span
+                                class="absolute -top-2 -right-3 w-5 h-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center">
+                                0
+                            </span>
+
+                        </a>
+
+                        <a href="/users/account" class="hover:text-blue-500 transition">
+                            My Account
+                        </a>
+
+                        <button id="theme-toggle" class="text-2xl hover:rotate-180 transition duration-500">
+                            <i class="ri-moon-line"></i>
+                        </button>
+
+                        <a href="/users/logout" class="text-red-500 hover:text-red-600 transition">
+                            Logout
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <% } %>
+
+    </nav>
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+        const icon = themeToggle.querySelector("i");
+
+        // Page load par saved theme apply karo
+        if (localStorage.getItem("theme") === "dark") {
+            html.classList.add("dark");
+            icon.classList.remove("ri-moon-line");
+            icon.classList.add("ri-sun-line");
+        }
+
+        themeToggle.addEventListener("click", () => {
+            html.classList.toggle("dark");
+
+            if (html.classList.contains("dark")) {
+                localStorage.setItem("theme", "dark");
+                icon.classList.remove("ri-moon-line");
+                icon.classList.add("ri-sun-line");
+            } else {
+                localStorage.setItem("theme", "light");
+                icon.classList.remove("ri-sun-line");
+                icon.classList.add("ri-moon-line");
+            }
+        });
+    </script>
+
+</body>

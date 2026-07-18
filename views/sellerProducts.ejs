@@ -1,0 +1,93 @@
+<%- include("./partials/header") %>
+
+    <div class="max-w-7xl mx-auto py-10">
+
+        <div class="flex justify-between items-center mb-8">
+
+            <h1 class="text-4xl font-bold text-black dark:text-white">
+                My Products
+            </h1>
+
+            <a href="/owners/admin" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg">
+
+                + Add Product
+
+            </a>
+
+        </div>
+
+        <% if(products.length===0){ %>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-10 text-center shadow">
+
+                <i class="ri-shopping-bag-line text-6xl text-gray-400"></i>
+
+                <h2 class="text-2xl font-semibold mt-5 text-black dark:text-white">
+                    No Products Found
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+                    Start by adding your first product.
+                </p>
+
+            </div>
+
+            <% } else { %>
+
+                <div class="grid grid-cols-4 gap-6">
+
+                    <% products.forEach(product=>{ %>
+
+                        <div class="rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800">
+
+                            <div class="h-56 flex justify-center items-center bg-[<%= product.bgcolor %>]">
+
+                                <img class="h-44" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>">
+
+                            </div>
+
+                            <div class="p-5"
+                                style="background:<%= product.panelcolor %>; color:<%= product.textcolor %>;">
+
+                                <h2 class="text-xl font-semibold">
+                                    <%= product.name %>
+                                </h2>
+
+                                <p class="mt-2 font-semibold">
+                                    ₹ <%= product.price %>
+                                </p>
+
+                                <div class="flex gap-3 mt-5">
+
+                                    <a href="/seller/edit/<%= product._id %>"
+                                        class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition">
+
+                                        <i class="ri-edit-line"></i>
+                                        Edit
+
+                                    </a>
+
+                                    <a href="/seller/delete/<%= product._id %>"
+                                        onclick="return confirm('Delete this product?')"
+                                        class="flex-1 text-center bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition">
+
+                                        <i class="ri-delete-bin-line"></i>
+                                        Delete
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <% }) %>
+
+                </div>
+
+                <% } %>
+
+    </div>
+
+    <%- include("./partials/footer") %>

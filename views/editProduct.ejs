@@ -1,0 +1,78 @@
+<%- include("./partials/header") %>
+
+<div class="max-w-4xl mx-auto py-10">
+
+    <h1 class="text-4xl font-bold mb-8 text-black dark:text-white">
+        Edit Product
+    </h1>
+
+    <form action="/seller/update/<%= product._id %>" method="POST">
+
+        <div class="space-y-5">
+
+            <input
+                type="text"
+                name="name"
+                value="<%= product.name %>"
+                placeholder="Product Name"
+                class="w-full border rounded-lg px-4 py-3 dark:bg-gray-800 dark:text-white">
+
+            <input
+                type="number"
+                name="price"
+                value="<%= product.price %>"
+                placeholder="Price"
+                class="w-full border rounded-lg px-4 py-3 dark:bg-gray-800 dark:text-white">
+
+            <input
+                type="number"
+                name="discount"
+                value="<%= product.discount %>"
+                placeholder="Discount"
+                class="w-full border rounded-lg px-4 py-3 dark:bg-gray-800 dark:text-white">
+
+            <div class="grid grid-cols-3 gap-4">
+
+                <div>
+                    <label>Background</label>
+                    <input
+                        type="color"
+                        name="bgcolor"
+                        value="<%= product.bgcolor %>"
+                        class="w-full h-12">
+                </div>
+
+                <div>
+                    <label>Panel</label>
+                    <input
+                        type="color"
+                        name="panelcolor"
+                        value="<%= product.panelcolor %>"
+                        class="w-full h-12">
+                </div>
+
+                <div>
+                    <label>Text</label>
+                    <input
+                        type="color"
+                        name="textcolor"
+                        value="<%= product.textcolor %>"
+                        class="w-full h-12">
+                </div>
+
+            </div>
+
+            <button
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+
+                Update Product
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<%- include("./partials/footer") %>

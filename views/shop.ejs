@@ -1,0 +1,150 @@
+<%- include('./partials/header') %>
+
+    <% if(success.length>0){ %>
+        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= success %>
+            </span>
+        </div>
+        <% } %>
+
+            <!-- Hero Banner -->
+            <section class="max-w-7xl mx-auto px-8 mt-8">
+
+                <div
+                    class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-700 via-purple-700 to-blue-600">
+
+                    <div class="px-12 py-10 flex items-center justify-between">
+
+                        <div class="max-w-xl">
+
+                            <span
+                                class="inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm font-medium">
+
+                                ✨ New Collection 2026
+
+                            </span>
+
+                            <h1 class="text-5xl font-extrabold text-white mt-6 leading-tight">
+
+                                Elevate <br>
+                                Your Style
+
+                            </h1>
+
+                            <p class="text-blue-100 mt-6 text-lg leading-8">
+
+                                Discover premium fashion, lifestyle accessories and everyday essentials curated just for
+                                you.
+
+                            </p>
+
+                            <a href="#products"
+                                class="inline-flex items-center gap-2 mt-8 px-7 py-4 bg-white hover:bg-gray-100 shadow-xl text-indigo-700 font-semibold rounded-full hover:scale-105 transition">
+
+                                Shop Collection
+
+                                <i class="ri-arrow-right-line"></i>
+
+                            </a>
+
+                        </div>
+
+                        <div class="hidden lg:flex">
+
+                            <i class="ri-shopping-bag-3-fill text-white/10 text-[180px]"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <div id="products" class="max-w-7xl mx-auto px-10 mt-8">
+
+                <!-- Search -->
+                <!-- 
+                <div class="flex items-center bg-white dark:bg-gray-800 rounded-2xl shadow px-6 py-4">
+
+                    <i class="ri-search-line text-2xl text-gray-400 mr-4"></i>
+
+                    <input type="text" placeholder="Search products..."
+                        class="w-full bg-transparent outline-none text-lg text-black dark:text-white">
+
+                </div> -->
+
+                <!-- Categories -->
+
+                <div class="flex gap-4 mt-6 flex-wrap">
+
+                    <button class="px-5 py-2 rounded-full bg-blue-600 text-white">
+                        All
+                    </button>
+
+                    <button class="px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                        Bags
+                    </button>
+
+                    <button class="px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                        Shoes
+                    </button>
+
+                    <button class="px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                        Watches
+                    </button>
+
+                    <button class="px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                        Electronics
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="max-w-7xl mx-auto px-8 py-10">
+
+                <div class="w-full flex flex-col gap-8">
+                    <div class="grid grid-cols-5 gap-8">
+                        <% products.forEach(function(product){ %>
+                            <div
+                                class="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                                <div class="relative h-64 flex items-center justify-center overflow-hidden"
+                                    style="background-color:<%= product.bgcolor %>;">
+                                    <!-- Badge -->
+                                    <span
+                                        class="absolute top-4 left-4 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                                        NEW
+                                    </span>
+
+                                    <!-- Wishlist -->
+                                    <button
+                                        class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-red-500 hover:text-white transition">
+                                        <i class="ri-heart-3-line"></i>
+                                    </button>
+                                    <img class="h-48 object-contain group-hover:scale-110 transition duration-500"
+                                        src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
+                                </div>
+                                <div class="p-5"
+                                    style="background-color:<%= product.panelcolor %>; color:<%= product.textcolor %>;">
+                                    <div>
+                                        <h3 class="text-lg font-semibold">
+                                            <%= product.name %>
+                                        </h3>
+
+                                        <h4 class="mt-2 text-xl font-bold">
+                                            ₹ <%= product.price %>
+                                        </h4>
+                                    </div>
+                                    <a class="w-11 h-11 flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 text-white transition duration-300"
+                                        href="/addtocart/<%= product._id %>">
+                                        <i class="ri-add-line"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                </div>
+            </div>
+            <%- include('./partials/footer') %>
